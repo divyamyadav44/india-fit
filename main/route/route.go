@@ -10,8 +10,7 @@ var HttpHandler http.Handler
 
 func InitRouter() {
 	r := mux.NewRouter()
-	r.HandleFunc("api/v1/getUser", userController.GetUser).Methods(http.MethodGet)
-
+	r.HandleFunc("/ap1/v1/getUser", userController.GetUser).Methods(http.MethodGet)
 	HttpHandler = r
 
 }

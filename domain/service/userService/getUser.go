@@ -1,6 +1,8 @@
 package userService
 
-import "india-fit/domain/model"
+import (
+	"india-fit/domain/model"
+)
 
 func GetUser(id int64) (user model.User, err error) {
 	user = model.User{
