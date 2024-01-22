@@ -19,7 +19,7 @@ func InitRouter() {
 
 	//Success Story Module
 	r.HandleFunc("/api/v1/succesStory/getStoryById", succesStoryController.GetStory).Methods(http.MethodGet)
-	r.HandleFunc("/api/v1/succesStory/ListStories", userController.GetUser).Methods(http.MethodGet)
+	r.HandleFunc("/api/v1/succesStory/ListStories", succesStoryController.ListStories).Methods(http.MethodGet)
 
 	HttpHandler = r
 
