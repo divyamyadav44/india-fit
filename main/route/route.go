@@ -2,6 +2,7 @@ package route
 
 import (
 	"github.com/gorilla/mux"
+	"india-fit/domain/controller/dietController"
 	"india-fit/domain/controller/succesStoryController"
 	"india-fit/domain/controller/userController"
 	"net/http"
@@ -16,6 +17,9 @@ func InitRouter() {
 	r.HandleFunc("/api/v1/createUser", userController.CreateUser).Methods(http.MethodPost)
 	r.HandleFunc("/api/v1/getUser", userController.GetUser).Methods(http.MethodGet)
 	r.HandleFunc("/api/v1/updateUser", userController.UpdateUser).Methods(http.MethodPut)
+	r.HandleFunc("/api/v1/listDiet", dietController.ListDietOfUser).Methods(http.MethodGet)
+
+	//Diet Module
 
 	//Success Story Module
 	r.HandleFunc("/api/v1/succesStory/getStoryById", succesStoryController.GetStory).Methods(http.MethodGet)
