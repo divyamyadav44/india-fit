@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"india-fit/main/intialize"
 	"india-fit/main/route"
 	"log"
@@ -11,10 +10,9 @@ import (
 func main() {
 	intialize.Init()
 
+	log.Println("service is up and running on port 3333")
 	err := http.ListenAndServe(":3333", route.HttpHandler)
 	if err != nil {
 		log.Println("err in creating handler")
 	}
-	fmt.Println("Welcome to india-fit")
-
 }
