@@ -16,9 +16,9 @@ func InitRouter() {
 
 	//Auth
 	r.HandleFunc("/api/v1/login", authController.Login).Methods(http.MethodPost)
+	r.HandleFunc("/api/v1/signUp", userController.CreateUser).Methods(http.MethodPost)
 
 	// User Module
-	r.HandleFunc("/api/v1/createUser", userController.CreateUser).Methods(http.MethodPost)
 	r.HandleFunc("/api/v1/getUser", userController.GetUser).Methods(http.MethodGet)
 	r.HandleFunc("/api/v1/updateUser", userController.UpdateUser).Methods(http.MethodPut)
 
