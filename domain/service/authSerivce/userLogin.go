@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-func Login(newlogin *model.UserLogin) (jwtToken string, err error) {
+func Login(newlogin *model.UserLogin) (authTokens model.AuthTokens, err error) {
 
 	//Password hashing
 	hashedPassword, err := HashPassword(newlogin.Password)
@@ -41,21 +41,21 @@ func Login(newlogin *model.UserLogin) (jwtToken string, err error) {
 		},
 	}
 
-	jwtToken, err = util.NewAccessToken(userClaims)
+	authTokens.AccessToken, err = util.NewAccessToken(userClaims)
 	if err != nil {
 		log.Println("error in generating token", err)
 		return
 	}
 
-	//refreshClaims := jwt.StandardClaims{
-	//	IssuedAt:  time.Now().Unix(),
-	//	ExpiresAt: time.Now().Add(time.Hour * 48).Unix(),
-	//}
+	refreshClaims := jwt.StandardClaims{
+		IssuedAt:  time.Now().Unix(),
+		ExpiresAt: time.Now().Add(time.Hour * 48).Unix(),
+	}
 
-	//signedRefreshToken, err := util.NewRefreshToken(refreshClaims)
-	//if err != nil {
-	//	log.Fatal("error creating refresh token")
-	//}
+	authTokens.RefreshToken, err = util.NewRefreshToken(refreshClaims)
+	if err != nil {
+		log.Fatal("error creating refresh token")
+	}
 
 	return
 }

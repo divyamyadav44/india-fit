@@ -12,3 +12,8 @@ type UserClaims struct {
 	Role string `json:"role"`
 	jwt.StandardClaims
 }
+
+type AuthTokens struct {
+	AccessToken  string `json:"access_token"`
+	RefreshToken string `json:"refresh_token"`
+}
